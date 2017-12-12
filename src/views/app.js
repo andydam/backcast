@@ -6,24 +6,18 @@ var AppView = Backbone.View.extend({
     this.videos = new Videos();
     
     //initial population of video collection
-    this.populateVideoList(window.exampleVideoData);
+    this.videos.populateVideoList(window.exampleVideoData);
     
     //declare a VideoPlayerView
     this.videoPlayer = new VideoPlayerView({collection: this.videos});
     //declare a VideoPlayerListView
     this.videoList = new VideoListView({collection: this.videos});
+    //delcare a SearchBar
+    this.searchBar = new SearchView();
     //render AppView when initialized
     this.render();
-  },
-  
-  populateVideoList(rawVideoList) {
-    //iterate through video data from youtube
-    rawVideoList.forEach((rawVideo) => {
-      //create video model for each video
-      let videoModel = new Video(rawVideo);
-      //add video to videos collection
-      this.videos.add(videoModel);
-    });
+    //select first video in list
+    this.videos.models[0].select();
   },
 
   render() {
@@ -33,8 +27,26 @@ var AppView = Backbone.View.extend({
     this.$('.player').html(this.videoPlayer.render());
     //add VideoPlayerListView to AppView
     this.$('.list').html(this.videoList.render());
+    //add SearchView to AppView
+    this.$('.search').html(this.searchBar.render());
+    //add search button click handler
+    this.$('.btn').click((event) => {
+      event.preventDefault();
+      //search for video using videos collection and value inside search input
+      this.videos.search(this.$('.form-control').val());
+    });
+    // this.$('.btn').keypress((e) => {
+    //   debugger;
+    //     var key = e.which;
+    //     if (key == 13) {
+    //       this.$('.btn').click();
+    //       return false;  
+    //     }
+    // });  
+
     return this.$el;
   },
+
 
   template: templateURL('src/templates/app.html')
 
