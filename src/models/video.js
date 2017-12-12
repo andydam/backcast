@@ -31,7 +31,7 @@ var Video = Backbone.Model.extend({
     let commentsArr = [];
     //iterate through comments and push to comments array
     for (let i = 0; i < comments.length; i++) {
-      commentsArr.push({author: comments[i].snippet.topLevelComment.snippet.authorDisplayName, text: comments[i].snippet.topLevelComment.snippet.textDisplay});
+      commentsArr.push({author: comments[i].snippet.topLevelComment.snippet.authorDisplayName, text: comments[i].snippet.topLevelComment.snippet.textOriginal});
     }
     //set comments to video model
     this.set('comments', commentsArr);
