@@ -8,7 +8,10 @@ var VideoListView = Backbone.View.extend({
   render() {
     this.$el.children().detach();
     this.$el.html(this.template());
+    //empty out video list before adding video list entry view
     this.$('.video-list').empty();
+    
+    //iterate through collection of videos
     this.collection.forEach((video) => {
       // create a videoListEntryView for each video
       let videoView = new VideoListEntryView({model: video});
@@ -16,7 +19,9 @@ var VideoListView = Backbone.View.extend({
       // add videoListEntry view to videoListView
       this.$('.video-list').append(videoView.render());
     });
+    //check if video list view has a collection
     if (this.collection.length) {
+      //select first video in collection
       this.collection.models[0].select();
     }
     return this.$el;

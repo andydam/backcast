@@ -3,11 +3,9 @@ var AppView = Backbone.View.extend({
   el: '#app',
 
   initialize() {
+    //declare videos collection
     this.videos = new Videos();
-    
-    //initial population of video collection
-    // this.videos.populateVideoList(window.exampleVideoData);
-    
+
     //declare a VideoPlayerView
     this.videoPlayer = new VideoPlayerView({collection: this.videos});
     //declare a VideoPlayerListView
@@ -17,8 +15,7 @@ var AppView = Backbone.View.extend({
     //render AppView when initialized
     this.render();
 
-    //select first video in list
-    // this.videos.models[0].select();
+    //initial population of video collection
     this.videos.search('cats');
   },
 

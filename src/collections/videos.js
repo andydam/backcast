@@ -29,9 +29,7 @@ var Videos = Backbone.Collection.extend({
     this.reset();
     //iterate through video data from youtube
     console.log(rawVideoList);
-    //check if using example data
-
-      //parse example data
+    //parse video data
     rawVideoList.forEach((rawVideo) => {
       //create video model for each video
       let videoModel = new Video(rawVideo);
