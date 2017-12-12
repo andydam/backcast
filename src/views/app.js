@@ -8,6 +8,8 @@ var AppView = Backbone.View.extend({
 
     //declare a VideoPlayerView
     this.videoPlayer = new VideoPlayerView({collection: this.videos});
+    //declare a VideoCommentsView
+    this.videoComments = new VideoCommentsView({collection: this.videos});
     //declare a VideoPlayerListView
     this.videoList = new VideoListView({collection: this.videos});
     //delcare a SearchBar
@@ -24,6 +26,8 @@ var AppView = Backbone.View.extend({
   
     //add VideoPlayerView to AppView
     this.$('.player').html(this.videoPlayer.render());
+    //add VideoCommentsView to AppView
+    this.$('.comments').html(this.videoComments.render());
     //add VideoPlayerListView to AppView
     this.$('.list').html(this.videoList.render());
     //add SearchView to AppView
