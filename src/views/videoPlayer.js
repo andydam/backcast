@@ -13,7 +13,8 @@ var VideoPlayerView = Backbone.View.extend({
       // first loading is rendered, then the the view is rendered using template
       this.$el.html(this.template(video.attributes));
     }
-    return this;
+    console.log(this);
+    return this.$el;
   },
 
   template: templateURL('src/templates/videoPlayer.html')

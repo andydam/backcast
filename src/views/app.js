@@ -33,7 +33,7 @@ var AppView = Backbone.View.extend({
     this.$('.player').html(this.videoPlayer.render());
     //add VideoPlayerListView to AppView
     this.$('.list').html(this.videoList.render());
-    return this;
+    return this.$el;
   },
 
   template: templateURL('src/templates/app.html')
