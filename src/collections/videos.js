@@ -2,12 +2,12 @@ var Videos = Backbone.Collection.extend({
 
   model: Video,
   
-  search(query) {
+  search(query, maxResults = 5) {
     //run youtube api ajax call
     Backbone.ajax({
       url: 'https://www.googleapis.com/youtube/v3/search',
       type: 'GET',
-      data: {key: window.YOUTUBE_API_KEY, q: query, part: 'snippet'},
+      data: {key: window.YOUTUBE_API_KEY, q: query, part: 'snippet', maxResults},
       dataType: 'json',
       success: (data) => {
         //populate videos collection with youtube api data

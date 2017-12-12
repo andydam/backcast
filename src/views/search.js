@@ -9,13 +9,19 @@ var SearchView = Backbone.View.extend({
       //search for video using videos collection and value inside search input
       this.collection.search(this.$('input').val());
     });
-    //add search enter keypress event handler
+    
+    //timer used within keyup listener on input
+    var timer;
+    //will trigger a search after 500 miliseconds pause in typing
     this.$('input').on('keyup', (e) => {
-      if (e.which === 13 || e.keyCode === 13) {
-        e.preventDefault();
-        this.collection.search(this.$('input').val()); 
-      }
+      //clear timer if already set and key has been pressed
+      timer && clearTimeout(timer);
+      //search after 500 miliseconds
+      timer = setTimeout(() => {
+        this.collection.search(this.$('input').val());
+      }, 500);
     });  
+    
     return this.$el;
   },
 

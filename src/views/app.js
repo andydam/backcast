@@ -3,7 +3,6 @@ var AppView = Backbone.View.extend({
   el: '#app',
 
   initialize() {
-    debugger;
     this.videos = new Videos();
     
     //initial population of video collection
