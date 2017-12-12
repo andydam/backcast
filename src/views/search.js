@@ -14,6 +14,10 @@ var SearchView = Backbone.View.extend({
     var timer;
     //will trigger a search after 500 miliseconds pause in typing
     this.$('input').on('keyup', (e) => {
+      //run search immediately after detecting enter key press
+      if (e.keyCode === 13 || e.which === 13) {
+        this.collection.search(this.$('input').val());
+      }
       //clear timer if already set and key has been pressed
       timer && clearTimeout(timer);
       //search after 500 miliseconds

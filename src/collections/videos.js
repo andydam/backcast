@@ -39,8 +39,6 @@ var Videos = Backbone.Collection.extend({
     
     //trigger sync to reload VideoListView
     this.trigger('sync', this);
-    //select first video in list
-    //this.models[0].select();
   },
 
 });
